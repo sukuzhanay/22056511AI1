@@ -65,6 +65,7 @@ class Servidor():
                             if ": " not in pickle.loads(data):
                                 self.nicks.append(pickle.loads(data))
                             else:
+                                print(pickle.loads(data))
                                 f = open("u22056511.txt", "a") #la a es para activar el modo append de escritura en el fichero.
                                 f.write(pickle.loads(data) + "\n")
                                 f.close()
