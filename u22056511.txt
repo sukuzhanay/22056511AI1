@@ -1,5 +1,0 @@
-alvaro: Hola
-usuariodesconocido: Hola
-alvaro: funciona
-usuariodesconocido: si
-alvaro: guay
