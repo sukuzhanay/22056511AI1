@@ -30,7 +30,7 @@ class Servidor():
                 print("**** TALOGOOO *****")
                 self.sock.close()
                 sys.exit()
-            elif msg == 'p':
+            elif msg == 'p': # si el usuario escribe por el servidor una p muestra los nicks que hay guardados
                 print(self.nicks)
             else:
                 pass
@@ -62,14 +62,13 @@ class Servidor():
                         data = c.recv(32)
                         if data:
                             self.broadcast(data, c)
-                            if ": " not in pickle.loads(data):
-                                self.nicks.append(pickle.loads(data))
+                            if ": " not in pickle.loads(data): #hace una comprobacion siempre que recibe cualquier dato para ver si es un nick o un mensaje del cliente
+                                self.nicks.append(pickle.loads(data)) #carga los nicks en la lista
                             else:
-                                print(pickle.loads(data))
+                                print(pickle.loads(data)) #envia el mensaje y se visualiza desde el servidor
                                 f = open("u22056511.txt", "a") #la a es para activar el modo append de escritura en el fichero.
-                                f.write(pickle.loads(data) + "\n")
-                                f.close()
-                            print(pickle.loads(data))
+                                f.write(pickle.loads(data) + "\n")# escribe en el fichero correspondiente
+                                f.close() #cierra el fichero
 
                     except:
                         pass

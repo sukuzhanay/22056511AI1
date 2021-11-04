@@ -19,12 +19,12 @@ class Cliente():
         hilo_recv_mensaje.start()
         print('Hilo con PID', os.getpid())
         print('Hilos activos', threading.active_count())
-        self.enviarNick(nickname)
+        self.enviarNick(nickname) #envia el nickname al conectarse por primera vez
 
         while True:
             msg = input('\nEscriba texto ? ** Enviar = ENTER ** Abandonar Chat = Q \n')
             if msg != 'Q':
-                self.enviar(nickname + ": " + msg)
+                self.enviar(nickname + ": " + msg)#funcion para enviar --> nombre: (mensaje)
             else:
                 print(" **** TALOGOOO  ****")
                 self.sock.close()
@@ -40,10 +40,10 @@ class Cliente():
                 pass
 
     def enviar(self, msg):
-        self.sock.send(pickle.dumps(msg))
+        self.sock.send(pickle.dumps(msg))#envia el mensaje al servidor 
 
     def enviarNick(self, nick_):
-        self.sock.send(pickle.dumps(nick_))
+        self.sock.send(pickle.dumps(nick_))#envia los nicks al servidor
 
 
 c = Cliente()
