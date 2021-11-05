@@ -11,7 +11,7 @@ class Cliente():
 
     nicks = []
 
-    def __init__(self, host=host_, port=port_, nickname=nick):
+    def __init__(self, host=socket.gethostname(), port=port_, nickname=nick):
         self.sock = socket.socket()
         self.sock.connect((str(host), int(port)))
         hilo_recv_mensaje = threading.Thread(target=self.recibir)
@@ -24,10 +24,13 @@ class Cliente():
         while True:
             msg = input('\nEscriba texto ? ** Enviar = ENTER ** Abandonar Chat = Q \n')
             if msg != 'Q':
-                self.enviar(nickname + ": " + msg)#funcion para enviar --> nombre: (mensaje)
+                self.enviar(nickname + ": " + msg) #funcion para enviar --> nombre: (mensaje)
+                f = open("u22056511.txt","w") #la a es para activar el modo append de escritura en el fichero.
+                f.write(msg + "\n")# escribe en el fichero correspondiente
+                f.close() #cierra el fichero  
             else:
                 print(" **** TALOGOOO  ****")
-                self.sock.close()
+                self.sock.close()  
                 sys.exit()
 
     def recibir(self):
