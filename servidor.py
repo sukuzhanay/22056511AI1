@@ -66,9 +66,6 @@ class Servidor():
                                 self.nicks.append(pickle.loads(data)) #carga los nicks en la lista
                             else:
                                 print(pickle.loads(data)) #envia el mensaje y se visualiza desde el servidor
-                                f = open("u22056511.txt", "w") #la a es para activar el modo append de escritura en el fichero.
-                                f.write(pickle.loads(data) + "\n")# escribe en el fichero correspondiente
-                                f.close() #cierra el fichero
                     except:
                         pass
 
